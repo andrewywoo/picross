@@ -1,0 +1,16 @@
+div.box_unchecked {
+  margin: 0;
+  border: 1px solid black;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+}
+
+div.box_checked {
+  margin: 0;
+  border: 1px solid black;
+  background: black;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+}
