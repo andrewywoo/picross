@@ -10,6 +10,15 @@ function App() {
     [false, false, true, true, true],
     [true, true, true, true, false]
   ];
+
+  const puzzle2 = [
+    [false, false, true, true, true],
+    [false, false, false, true, true],
+    [false, false, true, true, true],
+    [true, true, false, true, false],
+    [true, true, false, false, false]
+  ];
+
   return (
     <div className="App">
       <h1>P I C R O S S</h1>

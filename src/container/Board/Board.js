@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Box from "../../component/Box/Box";
 import "./Board.css";
 import IndicatorRow from "../../component/IndicatorRow/IndicatorRow";
+import Grid from "../../component/Grid/Grid";
 
 const Board = props => {
   const [grid, setGrid] = useState([
@@ -11,23 +11,24 @@ const Board = props => {
     [false, false, false, false, false],
     [false, false, false, false, false]
   ]);
-
   const [indicators, setIndicators] = useState({ top: [], side: [] });
+
+  const { puzzle } = props;
 
   useEffect(() => {
     //sets the indicators for the picross gameboard
     getIndicators();
-  }, [props.puzzle]);
+  }, [puzzle]);
 
   function getIndicators() {
     let top = [];
     let side = [];
 
     //logic for top
-    for (let i = 0; i < props.puzzle.length; i++) {
+    for (let i = 0; i < puzzle.length; i++) {
       let column = [];
       let topCount = 0;
-      props.puzzle.forEach(r => {
+      puzzle.forEach(r => {
         if (r[i]) {
           topCount++;
         } else if (topCount) {
@@ -46,8 +47,8 @@ const Board = props => {
 
     let sideCount = 0;
     let row = [];
-    for (let i = 0; i < props.puzzle.length; i++) {
-      props.puzzle[i].forEach(r => {
+    for (let i = 0; i < puzzle.length; i++) {
+      puzzle[i].forEach(r => {
         if (r) {
           sideCount++;
         } else if (sideCount) {
@@ -72,10 +73,25 @@ const Board = props => {
 
     let newGrid = [...grid];
     let boxValue = newGrid[row][column];
-
+    //replace grid item with it's toggle value.
     newGrid[row].splice(column, 1, !boxValue);
-
+    //update grid
     setGrid(newGrid);
+
+    if (gameWinCheck(newGrid, puzzle)) {
+      alert("You Win!");
+    }
+  }
+
+  function gameWinCheck(currentGrid, solutionGrid) {
+    for (let i = 0; i < currentGrid.length; i++) {
+      for (let k = 0; k < currentGrid[i].length; k++) {
+        if (currentGrid[i][k] !== solutionGrid[i][k]) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   return (
@@ -88,26 +104,13 @@ const Board = props => {
       </div>
       <div className="sideInd">
         <IndicatorRow
+          className="sideInd"
           indicators={indicators.side}
           orientation="vertical"
         ></IndicatorRow>
       </div>
       <div className="board">
-        {grid.map((row, rowIndex) => {
-          return (
-            <div key={rowIndex} className="row">
-              {row.map((checkVal, boxIndex) => {
-                return (
-                  <Box
-                    key={"" + rowIndex + boxIndex}
-                    checked={checkVal}
-                    clicked={() => handleBoxChange([rowIndex, boxIndex])}
-                  ></Box>
-                );
-              })}
-            </div>
-          );
-        })}
+        <Grid grid={grid} handleBoxChange={handleBoxChange} />
       </div>
     </div>
   );
