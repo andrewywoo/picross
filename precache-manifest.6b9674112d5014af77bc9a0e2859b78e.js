@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2d207d45d100513b5164f256b1bcc330",
+    "revision": "653b26ae3fd0de28ef51475933840942",
     "url": "/picross/index.html"
   },
   {
-    "revision": "03fcf2e3fbbe84a41afc",
-    "url": "/picross/static/css/main.96339b5a.chunk.css"
+    "revision": "d0892f5703a981205b8c",
+    "url": "/picross/static/css/main.838b4d17.chunk.css"
   },
   {
     "revision": "5996b152e29405b72a79",
     "url": "/picross/static/js/2.b0fbf703.chunk.js"
   },
   {
-    "revision": "03fcf2e3fbbe84a41afc",
+    "revision": "d0892f5703a981205b8c",
     "url": "/picross/static/js/main.cb925bb2.chunk.js"
   },
   {
