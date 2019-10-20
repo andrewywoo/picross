@@ -1,0 +1,23 @@
+div.row_indicator_horizontal {
+  margin: 0 10px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  right: 10px;
+}
+
+div.row_indicator_group_horizontal {
+  display: flex;
+  margin: 0 13px;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+
+div.row_indicator_group_vertical {
+  display: flex;
+  margin: 22px 0;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  position: relative;
+  bottom: 10px;
+}
