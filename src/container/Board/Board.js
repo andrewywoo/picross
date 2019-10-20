@@ -20,12 +20,47 @@ const Board = props => {
     [true, true, true, true, false]
   ];
 
-  //getTopIndicator
   function getTopIndicator() {
+    let result = [];
+    for (let i = 0; i < puzzle.length; i++) {
+      let column = [];
+      let count = 0;
+      puzzle.forEach(r => {
+        if (r[i]) {
+          count++;
+        } else if (count !== 0 && r[i] === false) {
+          column.push(count);
+          count = 0;
+        }
+      });
+      //only push count if it isn't 0. this accounts for the last row of the column being true;
+      if (count) {
+        column.push(count);
+      }
+      //after counting indicator numbers. push to result and result column.
+      result.push(column);
+      column = [];
+    }
     //should iterate through columns of 2d-array and return an array of arrays for top indicator
-    return [];
+    return result;
   }
-  //getSideIndicator
+
+  function getSideIndicator(index) {
+    let count = 0;
+    let result = [];
+    puzzle[index].forEach(r => {
+      if (r) {
+        count++;
+      } else if (count !== 0 && r === false) {
+        result.push(count);
+        count = 0;
+      }
+    });
+    if (count) {
+      result.push(count);
+    }
+    return result;
+  }
 
   //sets new state when a box is clicked.
   function handleBoxChange(boxNumber) {
@@ -42,10 +77,10 @@ const Board = props => {
   return (
     <div className="game-board">
       <div className="row_indicator">
-        {[1, 2, 3, 4, 5].map(() => {
+        {getTopIndicator().map((numbers, index) => {
           return (
-            <div className="row_indicator_group">
-              <Indicator alignment="vertical" numbers={[1, 2, 3]}></Indicator>
+            <div key={index} className="row_indicator_group">
+              <Indicator alignment="vertical" numbers={numbers}></Indicator>
             </div>
           );
         })}
@@ -53,7 +88,10 @@ const Board = props => {
       {grid.map((row, rowIndex) => {
         return (
           <div key={rowIndex} className="row">
-            <Indicator alignment="horizontal" numbers={[1, 2, 3]}></Indicator>
+            <Indicator
+              alignment="horizontal"
+              numbers={getSideIndicator(rowIndex)}
+            ></Indicator>
             {row.map((checkVal, boxIndex) => {
               return (
                 <Box

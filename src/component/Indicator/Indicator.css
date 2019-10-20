@@ -1,4 +1,5 @@
 div.horizontal {
+  margin-right: 3px;
   padding: 0 3px;
   display: inline-block;
 }
