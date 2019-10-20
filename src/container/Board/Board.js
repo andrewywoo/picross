@@ -16,15 +16,25 @@ const Board = props => {
   const { puzzle } = props;
 
   useEffect(() => {
-    //sets the indicators for the picross gameboard
-    getIndicators();
+    const gridSize = puzzle.length;
+    let row = Array(gridSize).fill(false);
+    let emptyGrid = [];
+
+    for (let i = 0; i < gridSize; i++) {
+      let newRow = [...row];
+      emptyGrid.push(newRow);
+    }
+
+    //clears grid and recalculates indicators
+    setGrid(emptyGrid);
+    calculateAndSetIndicators();
   }, [puzzle]);
 
-  function getIndicators() {
+  function calculateAndSetIndicators() {
     let top = [];
     let side = [];
 
-    //logic for top
+    //logic for top row
     for (let i = 0; i < puzzle.length; i++) {
       let column = [];
       let topCount = 0;
@@ -45,6 +55,7 @@ const Board = props => {
       column = [];
     }
 
+    //logic for side row
     let sideCount = 0;
     let row = [];
     for (let i = 0; i < puzzle.length; i++) {
