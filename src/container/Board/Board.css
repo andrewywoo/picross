@@ -1,4 +1,30 @@
 div.row {
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+div.row_indicator {
+  margin: 0 10px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  left: 22px;
+}
+
+div.row_indicator_group {
+  display: flex;
+  margin: 0 13px;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+
+div.game-board {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  position: relative;
+  right: 22px;
 }

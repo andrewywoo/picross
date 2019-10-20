@@ -1,31 +1,51 @@
 import React, { useState } from "react";
 import Box from "../../component/Box/Box";
 import "./Board.css";
+import Indicator from "../../component/Indicator/Indicator";
 
 const Board = props => {
   const [grid, setGrid] = useState([
-    [false, false, false, false],
-    [false, false, false, false],
-    [false, false, false, false],
-    [false, false, false, false]
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+    [false, false, false, false, false]
   ]);
 
+  const puzzle = [
+    [true, false, false, false, false],
+    [true, true, true, true, false],
+    [false, false, true, true, true],
+    [false, false, true, true, true],
+    [true, true, true, true, false]
+  ];
+
   function handleBoxChange(boxNumber) {
-    console.log(boxNumber);
+    let [row, column] = boxNumber;
 
     let newGrid = [...grid];
-    let boxValue = newGrid[boxNumber[0]][boxNumber[1]];
-    newGrid[boxNumber[0]].splice(boxNumber[1], 1, !boxValue);
+    let boxValue = newGrid[row][column];
+
+    newGrid[row].splice(column, 1, !boxValue);
 
     setGrid(newGrid);
   }
 
   return (
-    <div>
-      Game Board
+    <div className="game-board">
+      <div className="row_indicator">
+        {[1, 2, 3, 4, 5].map(() => {
+          return (
+            <div className="row_indicator_group">
+              <Indicator alignment="vertical" numbers={[1, 2, 3]}></Indicator>
+            </div>
+          );
+        })}
+      </div>
       {grid.map((row, rowIndex) => {
         return (
           <div key={rowIndex} className="row">
+            <Indicator alignment="horizontal" numbers={[1, 2, 3]}></Indicator>
             {row.map((checkVal, boxIndex) => {
               return (
                 <Box

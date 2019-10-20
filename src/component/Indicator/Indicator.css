@@ -1,0 +1,8 @@
+div.horizontal {
+  padding: 0 3px;
+  display: inline-block;
+}
+
+div.vertical {
+  padding: 0 3px;
+}
