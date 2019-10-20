@@ -20,6 +20,14 @@ const Board = props => {
     [true, true, true, true, false]
   ];
 
+  //getTopIndicator
+  function getTopIndicator() {
+    //should iterate through columns of 2d-array and return an array of arrays for top indicator
+    return [];
+  }
+  //getSideIndicator
+
+  //sets new state when a box is clicked.
   function handleBoxChange(boxNumber) {
     let [row, column] = boxNumber;
 
