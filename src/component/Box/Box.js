@@ -2,20 +2,15 @@ import React from "react";
 import "./Box.css";
 
 const Box = props => {
-  const box = props.checked ? (
+  return (
     <div
-      className="box_checked"
+      className={props.checked ? "box_checked" : "box_unchecked"}
       onClick={props.clicked}
       onContextMenu={() => console.log("right click!")}
-    ></div>
-  ) : (
-    <div
-      className="box_unchecked"
-      onClick={props.clicked}
-      onContextMenu={() => console.log("right click!")}
+      //onMouseDown={props.clicked}
+      //onMouseUp={props.clicked}
     ></div>
   );
-  return box;
 };
 
 export default Box;
