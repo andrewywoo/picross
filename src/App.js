@@ -5,6 +5,7 @@ import Board from "./container/Board/Board";
 import { games } from "./nonogram";
 import Modal from "./component/UI/Modal/Modal";
 import GameList from "./component/Menu/GameList/GameList";
+import MenuIcon from "./component/UI/MenuIcon/MenuIcon";
 
 function App() {
   const [puzzle, setPuzzle] = useState(games.easy[0].puzzle);
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <div onClick={() => setShowHide(!showHide)}>
+        <MenuIcon />
         <h1>W O O C R O S S</h1>
       </div>
       <Modal closeModal={() => setShowHide(!showHide)} show={showHide}>
