@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 import Board from "./container/Board/Board";
-import { games } from "./nonogram";
+import { games } from "./classes/nonogram";
 import Modal from "./component/UI/Modal/Modal";
 import GameList from "./component/Menu/GameList/GameList";
 import MenuIcon from "./component/UI/MenuIcon/MenuIcon";
