@@ -25,9 +25,13 @@ function App() {
 
   return (
     <div className="App">
-      <div onClick={() => setShowHide(!showHide)}>
-        <MenuIcon />
-        <h1>W O O C R O S S</h1>
+      <div className="AppHeader" onClick={() => setShowHide(!showHide)}>
+        <div className="AppHeaderMenu">
+          <MenuIcon />
+        </div>
+        <div className="AppHeaderLabel">
+          <h1>W O O C R O S S</h1>
+        </div>
       </div>
       <Modal closeModal={() => setShowHide(!showHide)} show={showHide}>
         <GameList changePuzzle={changePuzzle} />
